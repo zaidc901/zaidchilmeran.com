@@ -520,7 +520,7 @@ export default function Research() {
 
     <div className="nav-icons">
       <a href="mailto:zaid@zaidchilmeran.com"><FiMail size={16} /></a>
-      <a href="https://www.linkedin.com/in/zaid-c-2443a7369/" target="_blank" rel="noreferrer"><FiLinkedin size={16} /></a>
+      <a href="https://www.linkedin.com/in/zaidchilmeran/" target="_blank" rel="noreferrer"><FiLinkedin size={16} /></a>
       <a href="https://www.youtube.com/@ZaidTVYoutube" target="_blank" rel="noreferrer"><FiYoutube size={16} /></a>
     </div>
   </div>
