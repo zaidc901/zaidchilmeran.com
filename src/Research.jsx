@@ -508,8 +508,8 @@ export default function Research() {
 </a>
 
   <div className="dropdown-menu">
-    <a href="/research">Research</a>
-    <a href="/resources">Resource Library</a>
+    <a href="/#/research">Research</a>
+    <a href="/#/resources">Resource Library</a>
   </div>
 </div>
       <a href="/#contact">Contact</a>

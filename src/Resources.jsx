@@ -383,8 +383,8 @@ export default function Resources() {
               </a>
 
               <div className="dropdown-menu">
-                <a href="/research">Research</a>
-                <a href="/resources">Resource Library</a>
+                <a href="/#/research">Research</a>
+                <a href="/#/resources">Resource Library</a>
               </div>
             </div>
 

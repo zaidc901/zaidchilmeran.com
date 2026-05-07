@@ -948,8 +948,8 @@ export default function App() {
 </a>
 
   <div className="dropdown-menu">
-    <a href="/research">Research</a>
-    <a href="/resources">Resource Library</a>
+    <a href="/#/research">Research</a>
+    <a href="/#/resources">Resource Library</a>
   </div>
 </div>
             <a href="/#contact">Contact</a>
@@ -1072,7 +1072,7 @@ export default function App() {
           <div>
             <div className="project-column-head">
               <h3>Research Publications</h3>
-              <a className="view-link" href="/research">
+              <a className="view-link" href="/#/research">
                 View all →
               </a>
             </div>
@@ -1183,7 +1183,7 @@ export default function App() {
           <div>
             <div className="project-column-head">
               <h3>Resource Library</h3>
-              <a className="view-link" href="/resources">
+              <a className="view-link" href="/#/resources">
                 View all →
               </a>
             </div>
