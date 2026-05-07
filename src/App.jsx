@@ -5,6 +5,12 @@ import { FiMail, FiLinkedin, FiYoutube, FiFileText } from "react-icons/fi";
 
 const certificates = [
   {
+    image: "/Hubspot.png",
+    title: "Digital Marketing Certified",
+    sub: "HubSpot · May 2026",
+  },
+  
+  {
     image: "/Google.png",
     title: "Google AI Professional",
     sub: "Google · May 2026",
