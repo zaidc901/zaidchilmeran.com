@@ -22,11 +22,11 @@ const resourceCategories = [
     ],
   },
   {
-    heading: "3 — Business",
+    heading: "3 — Digital Tools",
     items: [
       {
         title: "Digital Venture Profit Simulator",
-        desc: "A free, interactive business calculator designed to model digital product revenue, costs, profit margins, and break-even performance.",
+        desc: "An interactive web project exploring financial modelling, UI design, and digital product analytics.",
         link: "/#/venture",
       },
     ],
