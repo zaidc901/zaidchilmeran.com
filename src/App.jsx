@@ -939,10 +939,10 @@ export default function App() {
         <div className="nav-right">
           <div className="nav-links">
             <a href="#home">Home</a>
-            <a href="/#about">About</a>
-            <a href="/#certificates">Certificates</a>
+            <a href="#about">About</a>
+            <a href="#certificates">Certificates</a>
             <div className="nav-dropdown">
-  <a href="/#projects" className="projects-link">
+  <a href="#projects" className="projects-link">
   Projects
   <span className="projects-arrow">▾</span>
 </a>
@@ -952,7 +952,7 @@ export default function App() {
     <a href="/#/resources">Resource Library</a>
   </div>
 </div>
-            <a href="/#contact">Contact</a>
+            <a href="#contact">Contact</a>
           </div>
 
           <div className="nav-icons">
