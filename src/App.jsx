@@ -728,12 +728,13 @@ export default function App() {
           padding: 22px;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: flex-start;
+          gap: 10px;
           text-align: left;
         }
 
         .mini-content p {
-  margin-top: 8px;
+  margin-top: 0;
 }
 
         .mini-actions {
