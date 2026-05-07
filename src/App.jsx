@@ -994,8 +994,8 @@ export default function App() {
           <p className="hero-sub">Medical student, researcher, and creator.</p>
 
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#about">Explore Portfolio</a>
-            <a className="btn btn-secondary" href="#contact">Contact</a>
+            <a className="btn btn-primary" href="/#/?section=about">Explore Portfolio</a>
+            <a className="btn btn-secondary" href="/#/?section=contact">Contact</a>
           </div>
         </motion.div>
 
