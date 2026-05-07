@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiMail, FiLinkedin, FiYoutube } from "react-icons/fi";
+import { FiMail, FiLinkedin, FiYoutube, FiFileText } from "react-icons/fi";
 
 const certificates = [
   {
@@ -725,12 +725,67 @@ export default function App() {
         }
 
         .mini-content {
-          padding: 16px;
+          padding: 22px;
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: space-between;
           text-align: left;
         }
+
+        .mini-content p {
+  margin-top: 8px;
+}
+
+        .mini-actions {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+
+  padding-top: 18px;
+}
+
+.mini-pubmed-btn,
+.mini-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 84px;
+  
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 800;
+  gap: 8px;
+
+  transition: 0.2s ease;
+}
+
+.mini-pubmed-btn {
+  background: rgba(37,99,235,0.08);
+  border: 1px solid rgba(37,99,235,0.12);
+  color: #2563eb;
+}
+
+.mini-pubmed-btn:hover {
+  background: rgba(37,99,235,0.14);
+  transform: translateY(-2px);
+}
+
+.mini-pdf-btn {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.14);
+  color: #dc2626;
+}
+
+.mini-pdf-btn:hover {
+  background: rgba(239,68,68,0.14);
+  transform: translateY(-2px);
+}
 
         .youtube-box {
           padding: 18px;
@@ -1094,13 +1149,7 @@ export default function App() {
 
             <div className="mini-stack">
               {research.map((item, i) => (
-                <a
-                  className="mini-card"
-                  key={i}
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <div className="mini-card" key={i}>
                   <div className="cover-wrap">
                     <img
                       src={item.image}
@@ -1116,10 +1165,38 @@ export default function App() {
                   </div>
 
                   <div className="mini-content">
-                    <h4>{item.title}</h4>
-                    <p>{item.desc}</p>
-                  </div>
-                </a>
+  <h4>{item.title}</h4>
+  <p>{item.desc}</p>
+
+  <div className="mini-actions">
+    <a
+      href={item.link}
+      target="_blank"
+      rel="noreferrer"
+      className="mini-pubmed-btn"
+    >
+      PubMed
+    </a>
+
+    <a
+      href={
+        item.title.includes("Sarcoidosis")
+          ? "/A review of sarcoidosis etiology, diagnosis and treatment.pdf"
+          : item.title.includes("septic arthritis")
+          ? "/The impact of comorbidities on the prognosis of patients with septic arthritis.pdf"
+          : "/Concussion injuries in sports and the role of instrumented mouthguards.pdf"
+      }
+      download
+      className="mini-pdf-btn"
+    >
+      <>
+  <FiFileText size={12} />
+  PDF
+</>
+    </a>
+  </div>
+</div>
+                </div>
               ))}
             </div>
           </div>

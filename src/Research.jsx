@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiMail, FiLinkedin, FiYoutube } from "react-icons/fi";
+import { FiMail, FiLinkedin, FiYoutube, FiFileText } from "react-icons/fi";
 
 const researchPapers = [
   {
@@ -8,7 +8,7 @@ const researchPapers = [
     title: "Concussion injuries in sports and instrumented mouthguards",
     desc: "Explores sports-related concussions and the role of instrumented mouthguards in impact monitoring and athlete safety.",
     date: "2025",
-    category: "Concussions",
+    category: "Biomechanics",
     link: "https://pubmed.ncbi.nlm.nih.gov/40236943/",
   },
   {
@@ -16,7 +16,7 @@ const researchPapers = [
     title: "The impact of comorbidities on the prognosis of patients with septic arthritis",
     desc: "Examines how comorbidities influence outcomes, prognosis, and clinical risk in septic arthritis patients.",
     date: "2025",
-    category: "Septic Arthritis",
+    category: "Infectious Diseases",
     link: "https://pubmed.ncbi.nlm.nih.gov/40606458/",
   },
   {
@@ -24,7 +24,7 @@ const researchPapers = [
     title: "A review of sarcoidosis etiology, diagnosis and treatment",
     desc: "Reviews the causes, diagnosis, and treatment approaches for sarcoidosis.",
     date: "2025",
-    category: "Sarcoidosis",
+    category: "Rheumatology",
     link: "https://pubmed.ncbi.nlm.nih.gov/40078389/",
   },
 ];
@@ -447,9 +447,6 @@ export default function Research() {
         }
 
         .research-btn {
-  position: absolute;
-  right: 22px;
-  bottom: 22px;
 
   padding: 12px 18px;
   border-radius: 999px;
@@ -466,6 +463,40 @@ export default function Research() {
 
 .research-btn:hover {
   background: rgba(37,99,235,0.14);
+  transform: translateY(-2px);
+}
+
+.research-actions {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 18px;
+  border-radius: 999px;
+
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.14);
+
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.pdf-btn:hover {
+  background: rgba(239,68,68,0.14);
   transform: translateY(-2px);
 }
 
@@ -556,13 +587,7 @@ export default function Research() {
           viewport={{ once: false, amount: 0.2 }}
         >
           {researchPapers.map((paper, i) => (
-            <a
-              href={paper.link}
-              target="_blank"
-              rel="noreferrer"
-              className="research-tile"
-              key={i}
-            >
+            <div className="research-tile" key={i}>
               <div className="research-image">
                 <img src={paper.image} alt={paper.title} />
               </div>
@@ -577,8 +602,32 @@ export default function Research() {
                 </div>
               </div>
 
-              <span className="research-btn">View in PubMed →</span>
-            </a>
+              <div className="research-actions">
+  <a
+    href={paper.link}
+    target="_blank"
+    rel="noreferrer"
+    className="research-btn"
+  >
+    PubMed
+  </a>
+
+  <a
+  href={
+    paper.category === "Sarcoidosis"
+      ? "/A review of sarcoidosis etiology, diagnosis and treatment.pdf"
+      : paper.category === "Septic Arthritis"
+      ? "/The impact of comorbidities on the prognosis of patients with septic arthritis.pdf"
+      : "/Concussion injuries in sports and the role of instrumented mouthguards.pdf"
+  }
+  download
+  className="pdf-btn"
+>
+  <FiFileText size={14} />
+  PDF
+</a>
+</div>
+            </div>
           ))}
 
           <div className="coming-soon">More research coming soon.</div>
