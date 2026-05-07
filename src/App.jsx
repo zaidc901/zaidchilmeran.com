@@ -6,7 +6,7 @@ import { FiMail, FiLinkedin, FiYoutube } from "react-icons/fi";
 const certificates = [
   {
     image: "/Google.png",
-    title: "Google AI",
+    title: "Google AI Professional",
     sub: "Google · May 2026",
   },
 
