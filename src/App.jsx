@@ -1204,8 +1204,16 @@ export default function App() {
             </div>
 
             <div className="mini-stack">
-              {pdfs.map((pdf, i) => (
-                <div className="mini-card" key={i}>
+  {pdfs.map((pdf, i) => (
+    <a
+      className="mini-card"
+      key={i}
+      href={
+        pdf.title === "Digital Venture Profit Simulator"
+          ? "/#/venture"
+          : "/#/resources"
+      }
+    >
                   <div className="cover-wrap">
                     <img
                       src={pdf.image}
@@ -1224,7 +1232,7 @@ export default function App() {
                     <h4>{pdf.title}</h4>
                     <p>{pdf.desc}</p>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
