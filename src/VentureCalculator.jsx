@@ -667,7 +667,7 @@ export default function VentureCalculator() {
 
       {/* FOOTER */}
       <footer style={{ padding: "48px 5vw", borderTop: "1px solid rgba(8,23,43,0.07)", display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 0.5 }}>
-        <span style={{ fontSize: 12, fontWeight: 800, color: "#5b6f88", textTransform: "uppercase", letterSpacing: "0.14em" }}>Free Open Access</span>
+        <span style={{ fontSize: 12, fontWeight: 800, color: "#5b6f88", textTransform: "uppercase", letterSpacing: "0.14em" }}>Zaid Chilmeran Portfolio</span>
         <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.14em", color: "#5b6f88" }}>© 2026 Zaid Chilmeran</p>
       </footer>
     </>
