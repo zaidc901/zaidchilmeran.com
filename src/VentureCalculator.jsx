@@ -152,7 +152,46 @@ const GLOBAL_CSS = `
   /* page */
   .calc-page { padding-top: 118px; min-height: 100vh; }
   .page-title h1 { font-size: clamp(64px, 8vw, 120px); line-height: 0.9; letter-spacing: -0.08em; font-weight: 800; margin-bottom: 24px; }
-  .page-title p  { font-size: 20px; color: #5b6f88; line-height: 1.5; max-width: 620px; }
+  .page-title p  { font-size: 20px; color: #5b6f88; line-height: 1.5; max-width: 720px; margin-left: 0; display: block; padding-left: 2px; }
+
+.venture-note {
+  margin-top: 28px;
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 18px 22px;
+
+  background: rgba(255,255,255,0.58);
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(37,99,235,0.10);
+  border-radius: 22px;
+
+  box-shadow: 0 14px 34px rgba(37,99,235,0.07);
+
+  max-width: 620px;
+}
+
+.venture-note-label {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: #2563eb;
+}
+
+.venture-note p {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.7;
+  color: #4b5f7a;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
 
   section { position: relative; padding: 42px 5vw; border-bottom: 1px solid rgba(8,23,43,0.07); overflow: hidden; }
 
@@ -406,6 +445,12 @@ export default function VentureCalculator() {
   <div className="fun-badge">Made simple</div>
 </div>
             <p>Model your digital business. Enter your costs, price, and volume to see exactly where you stand.</p>
+            <div className="venture-note">
+  <span className="venture-note-label">PROJECT NOTE</span>
+  <p>
+    A personal project exploring UI design, analytical modelling, and interactive web development.
+  </p>
+</div>
           </div>
 
         </motion.section>
