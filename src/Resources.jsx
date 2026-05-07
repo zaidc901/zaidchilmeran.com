@@ -372,12 +372,12 @@ export default function Resources() {
 
         <div className="nav-right">
           <div className="nav-links">
-            <a href="/">Home</a>
-            <a href="/#/#about">About</a>
-            <a href="/#/#certificates">Certificates</a>
+            <a href="/#/?section=home">Home</a>
+            <a href="/#/?section=about">About</a>
+            <a href="/#/?section=certificates">Certificates</a>
 
             <div className="nav-dropdown">
-              <a href="/#/#projects" className="projects-link">
+              <a href="/#/?section=projects" className="projects-link">
                 Projects
                 <span className="projects-arrow">▾</span>
               </a>
@@ -388,7 +388,7 @@ export default function Resources() {
               </div>
             </div>
 
-            <a href="/#/#contact">Contact</a>
+            <a href="/#/?section=contact">Contact</a>
           </div>
 
           <div className="nav-icons">

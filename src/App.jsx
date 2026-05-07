@@ -119,15 +119,22 @@ export default function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash) {
-      setTimeout(() => {
-        const element = document.querySelector(location.hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
-    }
-  }, [location]);
+  const params = new URLSearchParams(location.search);
+  const section = params.get("section");
+
+  if (section) {
+    setTimeout(() => {
+      const element = document.getElementById(section);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
+  }
+}, [location]);
 
   return (
     <>
@@ -938,11 +945,11 @@ export default function App() {
 
         <div className="nav-right">
           <div className="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#certificates">Certificates</a>
+            <a href="/#/?home">Home</a>
+            <a href="/#/?about">About</a>
+            <a href="/#/?certificates">Certificates</a>
             <div className="nav-dropdown">
-  <a href="#projects" className="projects-link">
+  <a href="/#/?projects" className="projects-link">
   Projects
   <span className="projects-arrow">▾</span>
 </a>
@@ -952,7 +959,7 @@ export default function App() {
     <a href="/#/resources">Resource Library</a>
   </div>
 </div>
-            <a href="#contact">Contact</a>
+            <a href="/#/?contact">Contact</a>
           </div>
 
           <div className="nav-icons">
