@@ -943,7 +943,7 @@ export default function App() {
       `}</style>
 
       <nav className="nav">
-        <a href="#home" className="brand">Zaid Chilmeran</a>
+        <a href="/#/?section=home" className="brand">Zaid Chilmeran</a>
 
         <div className="nav-right">
           <div className="nav-links">
