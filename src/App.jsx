@@ -1181,7 +1181,7 @@ export default function App() {
 
     <a
       href={
-        item.title.includes("Sarcoidosis")
+        item.title.includes("sarcoidosis")
           ? "/A review of sarcoidosis etiology, diagnosis and treatment.pdf"
           : item.title.includes("septic arthritis")
           ? "/The impact of comorbidities on the prognosis of patients with septic arthritis.pdf"

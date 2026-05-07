@@ -614,12 +614,12 @@ export default function Research() {
 
   <a
   href={
-    paper.category === "Sarcoidosis"
-      ? "/A review of sarcoidosis etiology, diagnosis and treatment.pdf"
-      : paper.category === "Septic Arthritis"
-      ? "/The impact of comorbidities on the prognosis of patients with septic arthritis.pdf"
-      : "/Concussion injuries in sports and the role of instrumented mouthguards.pdf"
-  }
+  paper.title.toLowerCase().includes("sarcoidosis")
+    ? "/A review of sarcoidosis etiology, diagnosis and treatment.pdf"
+    : paper.title.toLowerCase().includes("septic arthritis")
+    ? "/The impact of comorbidities on the prognosis of patients with septic arthritis.pdf"
+    : "/Concussion injuries in sports and the role of instrumented mouthguards.pdf"
+}
   download
   className="pdf-btn"
 >
