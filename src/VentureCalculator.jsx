@@ -285,10 +285,40 @@ const GLOBAL_CSS = `
   .highlight-card .big-num { font-size: 52px; font-weight: 800; letter-spacing: -0.06em; line-height: 1; }
 
   @media (max-width: 900px) {
-    .nav-links { display: none; }
-    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-    .breakeven-num { font-size: 40px; }
+  .nav-links { display: none; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .breakeven-num { font-size: 40px; }
+
+  .mkt-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 16px;
   }
+
+  .mkt-name,
+  .mkt-select,
+  .mkt-val {
+    width: 100%;
+  }
+
+  .mkt-val {
+    text-align: left;
+  }
+
+  .mkt-remove {
+    align-self: flex-end;
+  }
+
+  .card,
+  .card-dark {
+    padding: 22px;
+  }
+
+  section {
+    padding: 34px 5vw;
+  }
+}
 `;
 
 // ─── Sub-components ────────────────────────────────────────────────────────────
