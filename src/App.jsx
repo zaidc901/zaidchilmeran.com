@@ -1018,9 +1018,9 @@ export default function App() {
 
         <SmallLabel>01 — About</SmallLabel>
 
-        <h2>Who I Am</h2>
+        <h2>Who Am I?</h2>
 
-        <p className="about-sub">A calm snapshot of my academic and creative direction.</p>
+        <p className="about-sub">A small snippet of my academic and creative direction.</p>
 
         <p className="about-card">
           I am a medical student aspiring to do as many interesting things as possible, ranging from research and medical education to passion projects like YouTube videos. I enjoy learning deeply, creating useful resources, and helping others navigate their own academic and professional journeys.
