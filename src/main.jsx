@@ -4,6 +4,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import App from "./App.jsx";
 import Research from "./Research.jsx";
 import Resources from "./Resources.jsx";
+import VentureCalculator from "./VentureCalculator.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<App />} />
         <Route path="/research" element={<Research />} />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/venture" element={<VentureCalculator />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>

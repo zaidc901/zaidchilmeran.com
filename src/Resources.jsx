@@ -2,14 +2,34 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiMail, FiLinkedin, FiYoutube } from "react-icons/fi";
 
-const resources = [
+const resourceCategories = [
   {
-    title: "Guide for First-Year Medical Students",
-    desc: "A comprehensive guide covering the essentials for navigating your first year of medical school.",
+    heading: "1 — Medicine",
+    items: [
+      {
+        title: "Guide for First-Year Medical Students",
+        desc: "A comprehensive guide covering the essentials for navigating your first year of medical school.",
+      },
+    ],
   },
   {
-    title: "FA Football Coach Guide",
-    desc: "A guide to football coaching certifications and progression pathways.",
+    heading: "2 — Football",
+    items: [
+      {
+        title: "FA Football Coach Guide",
+        desc: "A guide to football coaching certifications and progression pathways.",
+      },
+    ],
+  },
+  {
+    heading: "3 — Business",
+    items: [
+      {
+        title: "Digital Venture Profit Simulator",
+        desc: "A free, interactive business calculator designed to model digital product revenue, costs, profit margins, and break-even performance.",
+        link: "/#/venture",
+      },
+    ],
   },
 ];
 
@@ -131,21 +151,22 @@ export default function Resources() {
         }
 
         .projects-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          line-height: 1;
-        }
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1;
+  transform: translateY(-1.5px);
+}
 
         .projects-arrow {
           font-size: 10px;
         }
 
         .nav-dropdown {
-          position: relative;
-          padding-bottom: 22px;
-          margin-bottom: -22px;
-        }
+  position: relative;
+  padding-bottom: 22px;
+  margin-bottom: -22px;
+}
 
         .nav-dropdown > a {
           display: inline-flex;
@@ -240,9 +261,9 @@ export default function Resources() {
 
         .resources-list {
   display: grid;
-  grid-template-columns: repeat(2, 340px);
-  gap: 28px;
-  margin-top: 42px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+  gap: 20px;
+  margin-top: 18px;
 }
 
         .resource-tile {
@@ -266,14 +287,33 @@ export default function Resources() {
 }
 
         .resource-image {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 10;
   width: 100%;
-  max-height: 420px;
+  max-height: 210px;
   overflow: hidden;
+  position: relative;
+}
+
+.resource-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.92) 70%,
+    rgba(255,255,255,1) 100%
+  );
+
+  pointer-events: none;
 }
 
 .resource-content {
-  padding: 24px;
+  padding: 18px;
 }
 
         .coming-soon {
@@ -299,10 +339,11 @@ export default function Resources() {
 }
 
         .resource-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
 
         .resource-content p {
   color: #5b6f88;
@@ -311,11 +352,15 @@ export default function Resources() {
 }
 
         .resource-content h2 {
-          font-size: clamp(22px, 2.1vw, 32px);
-          font-weight: 800;
-          line-height: 1.12;
-          margin-bottom: 14px;
-        }
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.resource-category {
+  margin-top: 56px;
+}
 
         .resource-meta {
           display: flex;
@@ -418,29 +463,53 @@ export default function Resources() {
             </p>
           </div>
 
-          <div className="resources-list">
-            {resources.map((resource, index) => (
-              <a
-                href={resource.link}
-                className="resource-tile"
-                key={index}
-              >
-                <div className="resource-image">
-                  <div className="coming-soon">
-  Coming soon!
+          <div>
+  {resourceCategories.map((category, categoryIndex) => (
+    <div className="resource-category" key={categoryIndex}>
+      <SmallLabel>{category.heading}</SmallLabel>
+
+      <div className="resources-list">
+        {category.items.map((resource, index) => (
+          <a
+            href={resource.link || "#"}
+            className="resource-tile"
+            key={index}
+          >
+            <div className="resource-image">
+  {resource.title === "Digital Venture Profit Simulator" ? (
+    <img
+      src="/DigitalVenture.png"
+      alt="Digital Venture Profit Simulator"
+    />
+  ) : (
+    <div className="coming-soon">
+      Coming soon!
+    </div>
+  )}
 </div>
-                </div>
 
-                <div className="resource-content">
-                  <h2>{resource.title}</h2>
-                  <p>{resource.desc}</p>
-
-                </div>
-              </a>
-            ))}
-          </div>
+            <div className="resource-content">
+              <h2>{resource.title}</h2>
+              <p>{resource.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
         </motion.section>
       </main>
+
+<footer style={{ padding: "48px 5vw", borderTop: "1px solid rgba(8,23,43,0.07)", display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 0.5 }}>
+  <span style={{ fontSize: 12, fontWeight: 800, color: "#5b6f88", textTransform: "uppercase", letterSpacing: "0.14em" }}>
+    Zaid Chilmeran Portfolio
+  </span>
+  <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.14em", color: "#5b6f88" }}>
+    © 2026 Zaid Chilmeran
+  </p>
+</footer>
+
     </>
   );
 }
