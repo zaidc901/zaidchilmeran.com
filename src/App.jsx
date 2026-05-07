@@ -119,7 +119,9 @@ export default function App() {
   const location = useLocation();
 
   useEffect(() => {
-  const params = new URLSearchParams(location.search);
+  const hash = window.location.hash;
+  const queryString = hash.includes("?") ? hash.split("?")[1] : "";
+  const params = new URLSearchParams(queryString);
   const section = params.get("section");
 
   if (section) {
@@ -132,7 +134,7 @@ export default function App() {
           block: "start",
         });
       }
-    }, 100);
+    }, 250);
   }
 }, [location]);
 
@@ -945,11 +947,11 @@ export default function App() {
 
         <div className="nav-right">
           <div className="nav-links">
-            <a href="/#/?home">Home</a>
-            <a href="/#/?about">About</a>
-            <a href="/#/?certificates">Certificates</a>
+            <a href="/#/?section=home">Home</a>
+            <a href="/#/?section=about">About</a>
+            <a href="/#/?section=certificates">Certificates</a>
             <div className="nav-dropdown">
-  <a href="/#/?projects" className="projects-link">
+  <a href="/#/?section=projects" className="projects-link">
   Projects
   <span className="projects-arrow">▾</span>
 </a>
@@ -959,7 +961,7 @@ export default function App() {
     <a href="/#/resources">Resource Library</a>
   </div>
 </div>
-            <a href="/#/?contact">Contact</a>
+            <a href="/#/?section=contact">Contact</a>
           </div>
 
           <div className="nav-icons">

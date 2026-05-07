@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiMail, FiLinkedin, FiYoutube } from "react-icons/fi";
 
@@ -55,6 +55,9 @@ function DecorativeCluster({ position = "right" }) {
 }
 
 export default function Research() {
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   return (
     <>
       <style>{`
