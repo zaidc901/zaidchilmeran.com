@@ -431,7 +431,7 @@ export default function VentureCalculator() {
             <div className="title-wrap">
   <h1>Digital Venture<br />Profit Simulator</h1>
 </div>
-            <p>Model your digital business. Enter your costs, price, and volume to see exactly where you stand.</p>
+            <p>An interactive project exploring digital venture modelling and profitability analysis.</p>
             <div className="venture-note">
   <span className="venture-note-label">PROJECT NOTE</span>
   <p>
