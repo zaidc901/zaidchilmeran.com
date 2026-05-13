@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiMail, FiLinkedin, FiYoutube } from "react-icons/fi";
+import { FiMail, FiLinkedin } from "react-icons/fi";
 
 const resourceCategories = [
   {
@@ -442,7 +442,6 @@ export default function Resources() {
           <div className="nav-icons">
             <a href="mailto:zaid@zaidchilmeran.com"><FiMail size={16} /></a>
             <a href="https://www.linkedin.com/in/zaidchilmeran/" target="_blank" rel="noreferrer"><FiLinkedin size={16} /></a>
-            <a href="https://www.youtube.com/@ZaidTVYoutube" target="_blank" rel="noreferrer"><FiYoutube size={16} /></a>
           </div>
         </div>
       </nav>

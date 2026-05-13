@@ -59,48 +59,6 @@ const GLOBAL_CSS = `
   display: inline-block;
 }
 
-.fun-badge {
-  position: absolute;
-  top: 38px;
-  right: -155px;
-  transform: rotate(7deg);
-
-  background: rgba(255,255,255,0.86);
-  color: #2563eb;
-
-  padding: 12px 18px;
-  border-radius: 18px;
-
-  font-size: 15px;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-
-  border: 1px solid rgba(37,99,235,0.16);
-  box-shadow: 0 18px 40px rgba(37,99,235,0.12);
-  backdrop-filter: blur(16px);
-
-  z-index: 3;
-}
-
-.fun-badge::before {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border-radius: 24px;
-  border: 2px solid rgba(250,204,21,0.7);
-  transform: rotate(-3deg);
-  z-index: -1;
-}
-
-.fun-badge::after {
-  content: "✦";
-  position: absolute;
-  top: -18px;
-  right: -12px;
-  color: #facc15;
-  font-size: 22px;
-}
-
   a { text-decoration: none; color: inherit; }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
@@ -472,7 +430,6 @@ export default function VentureCalculator() {
             <SmallLabel>05 — Venture Calculator</SmallLabel>
             <div className="title-wrap">
   <h1>Digital Venture<br />Profit Simulator</h1>
-  <div className="fun-badge">Made simple</div>
 </div>
             <p>Model your digital business. Enter your costs, price, and volume to see exactly where you stand.</p>
             <div className="venture-note">

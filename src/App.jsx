@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FiMail, FiLinkedin, FiYoutube, FiFileText } from "react-icons/fi";
+import { FiMail, FiLinkedin, FiFileText } from "react-icons/fi";
 
 const certificates = [
   {
@@ -101,15 +101,6 @@ const fadeUp = {
     transition: { duration: 0.6 },
   },
 };
-
-function YTIcon({ size = 28 }) {
-  return (
-    <svg width={size} height={Math.round(size * 0.7)} viewBox="0 0 40 28" fill="none">
-      <rect width="40" height="28" rx="7" fill="#FF0000" />
-      <polygon points="16,8 28,14 16,20" fill="white" />
-    </svg>
-  );
-}
 
 function SmallLabel({ children }) {
   return <div className="small-label">{children}</div>;
@@ -578,8 +569,7 @@ export default function App() {
 }
 
         .cert-card,
-        .mini-card,
-        .youtube-box {
+        .mini-card {
           background: rgba(255,255,255,0.84);
           border: 1px solid rgba(8,23,43,0.08);
           box-shadow: 0 10px 32px rgba(37,99,235,0.05);
@@ -603,8 +593,7 @@ export default function App() {
 }
 
         .cert-card h3,
-        .mini-card h4,
-        .video-info h4 {
+        .mini-card h4 {
           display: block;
           font-size: 14px;
           font-weight: 800;
@@ -614,8 +603,7 @@ export default function App() {
         }
 
         .cert-card span,
-        .mini-card p,
-        .video-info p {
+        .mini-card p {
           color: #5b6f88;
           font-size: 13px;
           line-height: 1.4;
@@ -636,7 +624,7 @@ export default function App() {
 
         .projects-grid {
           display: grid;
-          grid-template-columns: repeat(3,1fr);
+          grid-template-columns: repeat(2,1fr);
           gap: 34px;
           align-items: stretch;
           position: relative;
@@ -660,12 +648,6 @@ export default function App() {
           font-weight: 800;
           letter-spacing: -0.05em;
           text-align: left;
-        }
-
-        .project-youtube-title {
-          display: flex;
-          align-items: center;
-          gap: 10px;
         }
 
         .view-link {
@@ -794,101 +776,6 @@ export default function App() {
   transform: translateY(-2px);
 }
 
-        .youtube-box {
-          padding: 18px;
-          border-radius: 22px;
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-        }
-
-        .youtube-channel {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 18px;
-          font-weight: 800;
-          font-size: 18px;
-        }
-
-        
-
-        .play {
-          width: 58px;
-          height: 58px;
-          border-radius: 50%;
-          background: #ef4444;
-          color: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 22px;
-          padding-left: 4px;
-        }
-
-        .youtube-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 8px;
-}
-
-.video-card {
-  overflow: hidden;
-  border-radius: 18px;
-  background: white;
-  border: 1px solid rgba(8,23,43,0.08);
-  transition: 0.25s ease;
-}
-
-.video-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(37,99,235,0.10);
-}
-
-.video-thumb {
-  aspect-ratio: 16/9;
-  background: linear-gradient(135deg,#eef7ff,#dbeeff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video-info {
-  padding: 14px;
-}
-
-.video-info h4 {
-  font-size: 13px;
-  margin-bottom: 6px;
-}
-
-.video-info p {
-  font-size: 11px;
-  line-height: 1.35;
-}
-
-.view-all-center {
-  margin-top: 18px;
-  text-align: center;
-  color: #2563eb;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  align-self: center;
-  transition: 0.2s ease;
-  text-decoration: none;
-}
-
-.view-all-center:hover {
-  transform: translateY(-2px);
-  opacity: 0.85;
-}
-
         .contact .decor-cluster {
           right: 5vw;
           top: 40px;
@@ -925,7 +812,7 @@ export default function App() {
 
         .contact-icons {
           display: grid;
-          grid-template-columns: repeat(3,1fr);
+          grid-template-columns: repeat(2,1fr);
           gap: 14px;
         }
 
@@ -1035,7 +922,6 @@ export default function App() {
           <div className="nav-icons">
             <a href="mailto:zaid@zaidchilmeran.com"><FiMail size={16} /></a>
             <a href="https://www.linkedin.com/in/zaidchilmeran/" target="_blank" rel="noreferrer"><FiLinkedin size={16} /></a>
-            <a href="https://www.youtube.com/@ZaidTVYoutube" target="_blank" rel="noreferrer"><FiYoutube size={16} /></a>
           </div>
         </div>
       </nav>
@@ -1091,7 +977,7 @@ export default function App() {
         <p className="about-sub">A small snippet of my academic and creative direction.</p>
 
         <p className="about-card">
-          I am a medical student aspiring to do as many interesting things as possible, ranging from research and medical education to passion projects like YouTube videos. I enjoy learning deeply, creating useful resources, and helping others navigate their own academic and professional journeys.
+          I am a medical student aspiring to explore research, medical education, technology, and creative projects that can positively impact others.
         </p>
       </motion.section>
 
@@ -1142,7 +1028,7 @@ export default function App() {
         <div className="section-title">
           <SmallLabel>03 — Projects</SmallLabel>
           <h2>Projects</h2>
-          <p>Research, content creation, and resources I've built.</p>
+          <p>Research publications, technical projects, and educational resources.</p>
         </div>
 
         <div className="projects-grid">
@@ -1206,77 +1092,6 @@ export default function App() {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div>
-            <div className="project-column-head">
-              <h3 className="project-youtube-title">
-                <YTIcon size={28} />
-                YouTube
-              </h3>
-
-              <a className="view-link" href="https://www.youtube.com/@ZaidTVYoutube" target="_blank" rel="noreferrer">
-                Visit channel →
-              </a>
-            </div>
-
-            <div className="youtube-box">
-
-  <a
-    className="youtube-channel"
-    href="https://www.youtube.com/@ZaidTVYoutube"
-    target="_blank"
-    rel="noreferrer"
-  >
-    <img
-      src="/YTProfile.jpg"
-      alt="ZaidTVYoutube"
-      style={{
-        width: 36,
-        height: 36,
-        borderRadius: "50%",
-        objectFit: "cover",
-      }}
-    />
-
-    @ZaidTVYoutube
-  </a>
-
-  <div className="youtube-grid">
-
-    {[1,2,3].map((video) => (
-      <a
-        key={video}
-        className="video-card"
-        href="https://www.youtube.com/@ZaidTVYoutube"
-        target="_blank"
-        rel="noreferrer"
-      >
-
-        <div className="video-thumb">
-          <div className="play">▶</div>
-        </div>
-
-        <div className="video-info">
-          <h4>Coming soon!</h4>
-          <p>Coming soon!</p>
-        </div>
-
-      </a>
-    ))}
-
-  </div>
-
-  <a
-    className="view-all-center"
-    href="https://www.youtube.com/@ZaidTVYoutube"
-    target="_blank"
-    rel="noreferrer"
-  >
-    View all videos →
-  </a>
-
-</div>
           </div>
 
           <div>
@@ -1360,14 +1175,6 @@ export default function App() {
               <div>
                 <strong>LinkedIn</strong>
                 <span>Zaid Chilmeran</span>
-              </div>
-            </a>
-
-            <a href="https://www.youtube.com/@ZaidTVYoutube" target="_blank" rel="noreferrer" className="ic">
-              <FiYoutube size={20} />
-              <div>
-                <strong>YouTube</strong>
-                <span>@ZaidTVYoutube</span>
               </div>
             </a>
           </div>
