@@ -44,7 +44,7 @@ export const resources = [
     category: "Football technology",
     title: "ZaidTacticsBoard",
     description: "A football tactics board I built for creating formations, moving players around and planning sessions or match ideas.",
-    image: "/ZTBGraphic.png",
+    image: "/ZTBGraphic-2026.png",
     externalLink: "https://zaidtacticsboard.com",
     status: "Live website",
   },
