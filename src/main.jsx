@@ -1,20 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter, Routes, Route } from "react-router-dom";
-import App from "./App.jsx";
-import Research from "./Research.jsx";
-import Resources from "./Resources.jsx";
-import VentureCalculator from "./VentureCalculator.jsx";
+import { HashRouter } from "react-router-dom";
+import AppRouter from "./AppRouter.jsx";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/research" element={<Research />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/venture" element={<VentureCalculator />} />
-      </Routes>
+      <AppRouter />
     </HashRouter>
   </React.StrictMode>
 );

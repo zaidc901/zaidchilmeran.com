@@ -1,1195 +1,193 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FiMail, FiLinkedin, FiFileText } from "react-icons/fi";
-
-const certificates = [
-  {
-    image: "/Hubspot.png",
-    title: "Digital Marketing Certified",
-    sub: "HubSpot · May 2026",
-  },
-  
-  {
-    image: "/Google.png",
-    title: "Google AI Professional",
-    sub: "Google · May 2026",
-  },
-
-  {
-    image: "/Google.png",
-    title: "Google AI Essentials",
-    sub: "Google · May 2026",
-  },
-
-  {
-    image: "/FA.png",
-    title: "EE Playmaker",
-    sub: "The Football Association · Sep 2024",
-  },
-
-  {
-    image: "/FA.png",
-    title: "Introduction to Coaching Football",
-    sub: "The Football Association · Oct 2024",
-  },
-
-  {
-    image: "/FA.png",
-    title: "Introduction to Talent Identification",
-    sub: "The Football Association · Oct 2024",
-  },
-
-  {
-    image: "/FA.png",
-    title: "Introduction to First Aid in Football",
-    sub: "The Football Association · Sep 2024",
-  },
-
-  {
-    image: "/FA.png",
-    title: "Additional FA Certifications",
-    sub: "Safeguarding, Equality & Diversity, Disability Football & more",
-  },
-];
-
-const research = [
-  {
-    image: "/Concussion.png",
-    title: "Concussion injuries in sports and instrumented mouthguards",
-    desc: "Explores sports-related concussions and the role of instrumented mouthguards in impact monitoring.",
-    link: "https://pubmed.ncbi.nlm.nih.gov/40236943/",
-  },
-  {
-    image: "/Septic Arthritis.png",
-    title: "The impact of comorbidities on the prognosis of patients with septic arthritis",
-    desc: "Examines how comorbidities influence outcomes and prognosis in septic arthritis patients.",
-    link: "https://pubmed.ncbi.nlm.nih.gov/40606458/",
-  },
-  {
-    image: "/Sarcoidosis.png",
-    title: "A review of sarcoidosis etiology, diagnosis and treatment",
-    desc: "Reviews the etiology, diagnosis, and treatment approaches for sarcoidosis.",
-    link: "https://pubmed.ncbi.nlm.nih.gov/40078389/",
-  },
-];
-
-const pdfs = [
-  {
-    image: "/MedGuideCover.jpg",
-    title: "Guide for First-Year Medical Students",
-    desc: "A comprehensive guide covering the essentials for navigating your first year of medical school.",
-  },
-  {
-    image: "/FootballGuideCover.jpg",
-    title: "FA Football Coach Guide",
-    desc: "A guide to football coaching certifications and progression pathways.",
-  },
-  {
-    image: "/DigitalVenture.png",
-    title: "Digital Venture Profit Simulator",
-    desc: "An interactive web project exploring financial modelling, UI design, and digital product analytics.",
-  },
-];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.6 },
-  },
-};
-
-function SmallLabel({ children }) {
-  return <div className="small-label">{children}</div>;
-}
-
-function DecorativeCluster({ position = "right" }) {
-  return (
-    <div className={`decor-cluster ${position}`}>
-      <span className="decor-dot"></span>
-      <span className="decor-line"></span>
-      <span className="decor-ring"></span>
-      <span className="decor-plus">+</span>
-    </div>
-  );
-}
+import { useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
+import { FiArrowDown, FiArrowUpRight, FiFileText, FiLinkedin, FiMail } from "react-icons/fi";
+import { Reveal, SectionLabel, SiteLayout } from "./components/SiteChrome.jsx";
+import { certificates, researchPapers, resources } from "./data.js";
 
 export default function App() {
-
   const location = useLocation();
 
   useEffect(() => {
-  const hash = window.location.hash;
-  const queryString = hash.includes("?") ? hash.split("?")[1] : "";
-  const params = new URLSearchParams(queryString);
-  const section = params.get("section");
-
-  if (section) {
-    setTimeout(() => {
-      const element = document.getElementById(section);
-
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    }, 250);
-  }
-}, [location]);
+    const section = new URLSearchParams(location.search).get("section") || "home";
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(section)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [location.search]);
 
   return (
-    <>
-      <style>{`
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-          margin: 0;
-          padding: 0;
-          font-family: Inter, sans-serif;
-          background: #f6faff;
-          color: #08172b;
-          overflow-x: hidden;
-        }
-
-        body::before {
-          content: "";
-          position: fixed;
-          inset: 0;
-          z-index: -3;
-          background:
-            radial-gradient(circle at 12% 8%, rgba(37,99,235,0.13), transparent 28%),
-            radial-gradient(circle at 88% 14%, rgba(14,165,233,0.10), transparent 28%),
-            radial-gradient(circle at 72% 90%, rgba(250,204,21,0.09), transparent 30%),
-            #f6faff;
-        }
-
-        body::after {
-          content: "";
-          position: fixed;
-          inset: 0;
-          z-index: -2;
-          background-image:
-            linear-gradient(rgba(37,99,235,0.032) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(37,99,235,0.032) 1px, transparent 1px);
-          background-size: 70px 70px;
-          mask-image: radial-gradient(circle at center, black 18%, transparent 78%);
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        section {
-          position: relative;
-          padding: 42px 5vw;
-          border-bottom: 1px solid rgba(8,23,43,0.07);
-          overflow: hidden;
-        }
-
-        .nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 62px;
-          z-index: 100;
-          padding: 0 5vw;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background: rgba(255,255,255,0.72);
-          backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(8,23,43,0.08);
-        }
-
-        .brand { font-size: 17px; font-weight: 800; letter-spacing: -0.05em; }
-
-        .nav-right { display: flex; align-items: center; gap: 28px; }
-
-        .nav-links { display: flex; align-items: center; gap: 28px; }
-
-        .nav-links a { font-size: 13px; font-weight: 700; }
-
-        .nav-icons { display: flex; align-items: center; gap: 14px; }
-
-        .nav-icons a {
-          width: 28px;
-          height: 28px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 999px;
-          transition: 0.2s ease;
-        }
-
-.projects-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  line-height: 1;
-}
-
-.projects-arrow {
-  font-size: 10px;
-  transform: translateY(0px);
-}
-
-.nav-dropdown {
-  display: flex;
-  align-items: center;
-}
-
-        .nav-dropdown {
-  position: relative;
-  padding-bottom: 22px;
-  margin-bottom: -22px;
-}
-
-.nav-dropdown > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: -12px;
-  min-width: 190px;
-  padding: 10px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(8,23,43,0.08);
-  box-shadow: 0 14px 34px rgba(37,99,235,0.12);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(4px);
-  transition: 0.18s ease;
-  pointer-events: none;
-}
-
-.dropdown-menu a {
-  padding: 10px 12px;
-  border-radius: 10px;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.dropdown-menu a:hover {
-  background: rgba(37,99,235,0.08);
-  color: #2563eb;
-}
-
-.nav-dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-        .nav-icons a:hover { background: rgba(37,99,235,0.08); }
-
-        .small-label {
-          font-size: 12px;
-          font-weight: 800;
-          color: #2563eb;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          margin-bottom: 16px;
-          text-align: left;
-          position: relative;
-          z-index: 3;
-        }
-
-        .decor-cluster {
-          position: absolute;
-          width: 130px;
-          height: 110px;
-          pointer-events: none;
-          z-index: 0;
-          opacity: 0.75;
-        }
-
-        .decor-cluster.right {
-          top: 94px;
-          right: 7vw;
-        }
-
-        .decor-cluster.left {
-          top: 125px;
-          left: 7vw;
-        }
-
-        .decor-dot {
-          position: absolute;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background: rgba(250,204,21,0.58);
-          top: 12px;
-          left: 18px;
-        }
-
-        .decor-line {
-          position: absolute;
-          width: 64px;
-          height: 5px;
-          border-radius: 999px;
-          background: rgba(250,204,21,0.78);
-          top: 44px;
-          left: 44px;
-          transform: rotate(-18deg);
-        }
-
-        .decor-ring {
-          position: absolute;
-          width: 42px;
-          height: 42px;
-          border-radius: 50%;
-          border: 3px solid rgba(37,99,235,0.25);
-          right: 4px;
-          bottom: 12px;
-        }
-
-        .decor-plus {
-          position: absolute;
-          font-size: 30px;
-          font-weight: 500;
-          color: rgba(37,99,235,0.32);
-          left: 2px;
-          bottom: 10px;
-        }
-
-        .soft-panel {
-          position: absolute;
-          width: 260px;
-          height: 260px;
-          border-radius: 42px;
-          background: linear-gradient(135deg, rgba(255,255,255,0.65), rgba(219,234,254,0.45));
-          border: 1px solid rgba(37,99,235,0.08);
-          transform: rotate(10deg);
-          z-index: 0;
-          pointer-events: none;
-        }
-
-        .hero {
-          min-height: 88vh;
-          display: grid;
-          grid-template-columns: 1fr auto;
-          align-items: center;
-          gap: 5.5vw;
-          padding-top: 90px;
-        }
-
-        .hero .soft-panel {
-          right: 6vw;
-          top: 150px;
-        }
-
-        .hero .decor-cluster {
-          right: 34vw;
-          top: 155px;
-        }
-
-        .kicker {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 12px 20px;
-          border-radius: 999px;
-          background: white;
-          border: 1px solid rgba(37,99,235,0.18);
-          color: #2563eb;
-          font-size: 12px;
-          font-weight: 800;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          margin-bottom: 34px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .kicker::before {
-          content: "";
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: linear-gradient(135deg,#2563eb,#0ea5e9);
-        }
-
-        .hero-name {
-          text-align: left;
-          font-size: clamp(68px, 9vw, 130px);
-          line-height: 0.9;
-          letter-spacing: -0.08em;
-          font-weight: 800;
-          margin-bottom: 24px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .hero-sub {
-          font-size: 22px;
-          color: #5b6f88;
-          margin-bottom: 34px;
-          letter-spacing: -0.04em;
-          position: relative;
-          z-index: 2;
-          text-align: left;
-        }
-
-        .hero-actions { display: flex; gap: 16px; position: relative; z-index: 2; }
-
-        .btn {
-          height: 56px;
-          padding: 0 28px;
-          border-radius: 999px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 800;
-          font-size: 15px;
-          transition: 0.2s ease;
-        }
-
-        .btn:hover { transform: translateY(-2px); }
-
-        .btn-primary {
-          background: linear-gradient(135deg,#2563eb,#0ea5e9);
-          color: white;
-        }
-
-        .btn-secondary {
-          background: white;
-          border: 1px solid rgba(8,23,43,0.12);
-        }
-
-        .hero-photo-wrap {
-          width: clamp(230px, 26vw, 345px);
-          aspect-ratio: 1;
-          border-radius: 34px;
-          overflow: hidden;
-          background: #dbeafe;
-          border: 1px solid rgba(37,99,235,0.12);
-          box-shadow: 0 20px 60px rgba(37,99,235,0.15);
-          transform: translateX(-36px);
-          position: relative;
-          z-index: 2;
-        }
-
-        .hero-photo-wrap img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .about {
-          text-align: center;
-        }
-
-        .about .soft-panel {
-          left: 50%;
-          top: 158px;
-          transform: translateX(-50%) rotate(8deg);
-          width: 420px;
-          height: 180px;
-          border-radius: 50px;
-        }
-
-        .about h2,
-        .section-title h2,
-        .contact-inner h2 {
-          font-size: clamp(48px,5vw,72px);
-          font-weight: 800;
-          letter-spacing: -0.065em;
-          line-height: 1;
-          margin-bottom: 12px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .about-sub,
-        .section-title p {
-          color: #5b6f88;
-          margin-bottom: 38px;
-          font-size: 17px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .about-card {
-          max-width: 920px;
-          margin: 0 auto;
-          padding: 38px 54px;
-          border-radius: 28px;
-          background: rgba(255,255,255,0.84);
-          border: 1px solid rgba(8,23,43,0.08);
-          box-shadow: 0 16px 48px rgba(37,99,235,0.08);
-          font-size: 20px;
-          line-height: 1.7;
-          color: #405774;
-          position: relative;
-          z-index: 2;
-        }
-
-        .section-title {
-          margin-bottom: 34px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .certificates .decor-cluster {
-          right: 6vw;
-          top: 115px;
-        }
-
-        .cert-grid {
-          display: grid;
-          grid-template-columns: repeat(4,1fr);
-          gap: 20px;
-          position: relative;
-          z-index: 2;
-        }
-
-#about,
-#certificates,
-#projects,
-#contact {
-  scroll-margin-top: 65px;
-}
-
-        .cert-card,
-        .mini-card {
-          background: rgba(255,255,255,0.84);
-          border: 1px solid rgba(8,23,43,0.08);
-          box-shadow: 0 10px 32px rgba(37,99,235,0.05);
-        }
-
-        .cert-card {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 22px;
-  border-radius: 18px;
-  min-height: 120px;
-  text-align: left;
-}
-
-        .cert-image {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-        .cert-card h3,
-        .mini-card h4 {
-          display: block;
-          font-size: 14px;
-          font-weight: 800;
-          margin-bottom: 6px;
-          letter-spacing: -0.04em;
-          text-align: left;
-        }
-
-        .cert-card span,
-        .mini-card p {
-          color: #5b6f88;
-          font-size: 13px;
-          line-height: 1.4;
-          text-align: left;
-        }
-
-        .projects .decor-cluster {
-          right: 6vw;
-          top: 115px;
-        }
-
-        .projects .soft-panel {
-          left: -70px;
-          bottom: 80px;
-          width: 210px;
-          height: 210px;
-        }
-
-        .projects-grid {
-          display: grid;
-          grid-template-columns: repeat(2,1fr);
-          gap: 34px;
-          align-items: stretch;
-          position: relative;
-          z-index: 2;
-        }
-
-        .projects-grid > div {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .project-column-head {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 16px;
-        }
-
-        .project-column-head h3 {
-          font-size: 22px;
-          font-weight: 800;
-          letter-spacing: -0.05em;
-          text-align: left;
-        }
-
-        .view-link {
-          color: #2563eb;
-          font-size: 13px;
-          font-weight: 800;
-        }
-
-        .mini-stack {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          flex: 1;
-        }
-
-        .mini-card {
-          display: grid;
-          grid-template-columns: 42% 1fr;
-          min-height: 128px;
-          border-radius: 18px;
-          overflow: hidden;
-          flex: 1;
-          text-align: left;
-          padding: 0;
-        }
-
-        .cover-wrap {
-          position: relative;
-          min-height: 128px;
-          background: linear-gradient(135deg, #dbeafe, #eff6ff);
-          overflow: hidden;
-        }
-
-        .cover-wrap img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .cover-wrap::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 55%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.88));
-        }
-
-        .cover-placeholder {
-          width: 100%;
-          height: 100%;
-          min-height: 128px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #2563eb;
-          font-weight: 800;
-          font-size: 13px;
-          text-align: center;
-          padding: 16px;
-        }
-
-        .mini-content {
-          padding: 22px;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          gap: 10px;
-          text-align: left;
-        }
-
-        .mini-content p {
-  margin-top: 0;
-}
-
-        .mini-actions {
-  margin-top: auto;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-
-  padding-top: 18px;
-}
-
-.mini-pubmed-btn,
-.mini-pdf-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 84px;
-  
-  padding: 10px 16px;
-  border-radius: 999px;
-
-  font-size: 11px;
-  font-weight: 800;
-  gap: 8px;
-
-  transition: 0.2s ease;
-}
-
-.mini-pubmed-btn {
-  background: rgba(37,99,235,0.08);
-  border: 1px solid rgba(37,99,235,0.12);
-  color: #2563eb;
-}
-
-.mini-pubmed-btn:hover {
-  background: rgba(37,99,235,0.14);
-  transform: translateY(-2px);
-}
-
-.mini-pdf-btn {
-  background: rgba(239,68,68,0.08);
-  border: 1px solid rgba(239,68,68,0.14);
-  color: #dc2626;
-}
-
-.mini-pdf-btn:hover {
-  background: rgba(239,68,68,0.14);
-  transform: translateY(-2px);
-}
-
-        .contact .decor-cluster {
-          right: 5vw;
-          top: 40px;
-          opacity: 0.45;
-          transform: scale(0.9);
-        }
-
-        .contact .soft-panel {
-          right: -140px;
-          bottom: -40px;
-          opacity: 0.45;
-          transform: rotate(12deg);
-        }
-
-        .contact-inner {
-          max-width: 900px;
-          margin: 0 auto;
-          margin-top: 34px;
-          padding: 46px;
-          border-radius: 28px;
-          background: rgba(255,255,255,0.84);
-          border: 1px solid rgba(8,23,43,0.08);
-          box-shadow: 0 16px 48px rgba(37,99,235,0.08);
-          text-align: center;
-          position: relative;
-          z-index: 2;
-        }
-
-        .contact-inner p {
-          color: #5b6f88;
-          margin-bottom: 28px;
-          line-height: 1.5;
-        }
-
-        .contact-icons {
-          display: grid;
-          grid-template-columns: repeat(2,1fr);
-          gap: 14px;
-        }
-
-        .ic {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 15px;
-          border-radius: 16px;
-          background: white;
-          border: 1px solid rgba(37,99,235,0.12);
-          text-align: left;
-        }
-
-        .ic strong {
-          display: block;
-          color: #08172b;
-          font-size: 14px;
-        }
-
-        .ic span {
-          display: block;
-          color: #64748b;
-          font-size: 12px;
-          margin-top: 2px;
-        }
-        
-.section-animate {
-  opacity: 0;
-  transform: translateY(34px);
-  animation: sectionFadeUp 0.85s ease forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 28%;
-}
-
-@keyframes sectionFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(34px);
-    filter: blur(6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0px);
-  }
-}
-
-        @media (max-width: 1000px) {
-          .hero {
-            grid-template-columns: 1fr;
-            text-align: center;
-          }
-
-          .hero-name {
-            text-align: center;
-          }
-
-          .hero-actions {
-            justify-content: center;
-          }
-
-          .hero-photo-wrap {
-            transform: none;
-            justify-self: center;
-          }
-
-          .projects-grid,
-          .cert-grid,
-          .contact-icons {
-            grid-template-columns: 1fr;
-          }
-
-          .mini-card {
-            grid-template-columns: 38% 1fr;
-          }
-
-          .nav-links {
-            display: none;
-          }
-        }
-      `}</style>
-
-      <nav className="nav">
-        <a href="/#/?section=home" className="brand">Zaid Chilmeran</a>
-
-        <div className="nav-right">
-          <div className="nav-links">
-            <a href="/#/?section=home">Home</a>
-            <a href="/#/?section=about">About</a>
-            <a href="/#/?section=certificates">Certificates</a>
-            <div className="nav-dropdown">
-  <a href="/#/?section=projects" className="projects-link">
-  Projects
-  <span className="projects-arrow">▾</span>
-</a>
-
-  <div className="dropdown-menu">
-    <a href="/#/research">Research</a>
-    <a href="/#/resources">Resource Library</a>
-  </div>
-</div>
-            <a href="/#/?section=contact">Contact</a>
-          </div>
-
-          <div className="nav-icons">
-            <a href="mailto:zaid@zaidchilmeran.com"><FiMail size={16} /></a>
-            <a href="https://www.linkedin.com/in/zaidchilmeran/" target="_blank" rel="noreferrer"><FiLinkedin size={16} /></a>
-          </div>
-        </div>
-      </nav>
-
-      <section id="home" className="hero">
-        <div className="soft-panel"></div>
-        <DecorativeCluster />
-
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          style={{ textAlign: "left" }}
-        >
-          <div className="kicker">Personal Portfolio</div>
-
-          <h1 className="hero-name">
-            Zaid
-            <br />
-            Chilmeran
-          </h1>
-
-          <p className="hero-sub">Medical student, researcher, and creator.</p>
-
-          <div className="hero-actions">
-            <a className="btn btn-primary" href="/#/?section=about">Explore Portfolio</a>
-            <a className="btn btn-secondary" href="/#/?section=contact">Contact</a>
-          </div>
-        </motion.div>
-
-        <motion.div className="hero-photo-wrap" variants={fadeUp} initial="hidden" whileInView="visible">
-          <img src="/Profile.jpeg" alt="Zaid Chilmeran" />
-        </motion.div>
-      </section>
-
-      <motion.section
-        id="about" className="section-offset"
-        className="about"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
-      >
-        <div className="soft-panel"></div>
-        <DecorativeCluster position="left" />
-        <DecorativeCluster position="right" />
-
-        <SmallLabel>01 — About</SmallLabel>
-
-        <h2>Who Am I?</h2>
-
-        <p className="about-sub">A small snippet of my academic and creative direction.</p>
-
-        <p className="about-card">
-          I am a medical student aspiring to explore research, medical education, technology, and creative projects that can positively impact others.
-        </p>
-      </motion.section>
-
-      <motion.section
-        id="certificates" className="section-offset"
-        className="certificates"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
-      >
-        <DecorativeCluster />
-
-        <div className="section-title">
-          <SmallLabel>02 — Certificates</SmallLabel>
-          <h2>Certificates</h2>
-          <p>A collection of my achievements and completed certifications.</p>
-        </div>
-
-        <div className="cert-grid">
-          {certificates.map((cert, i) => (
-            <div className="cert-card" key={i}>
-              <img
-                src={cert.image}
-                alt={cert.title}
-                className="cert-image"
-              />
-              <div>
-                <h3>{cert.title}</h3>
-                <span>{cert.sub}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section
-        id="projects" className="section-offset"
-        className="projects"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
-      >
-        <div className="soft-panel"></div>
-        <DecorativeCluster />
-
-        <div className="section-title">
-          <SmallLabel>03 — Projects</SmallLabel>
-          <h2>Projects</h2>
-          <p>Research publications, technical projects, and educational resources.</p>
-        </div>
-
-        <div className="projects-grid">
-          <div>
-            <div className="project-column-head">
-              <h3>Research Publications</h3>
-              <a className="view-link" href="/#/research">
-                View all →
-              </a>
-            </div>
-
-            <div className="mini-stack">
-              {research.map((item, i) => (
-                <div className="mini-card" key={i}>
-                  <div className="cover-wrap">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      onError={(e) => {
-                        e.target.style.display = "none";
-                        e.target.nextSibling.style.display = "flex";
-                      }}
-                    />
-                    <div className="cover-placeholder" style={{ display: "none" }}>
-                      Research Image
-                    </div>
-                  </div>
-
-                  <div className="mini-content">
-  <h4>{item.title}</h4>
-  <p>{item.desc}</p>
-
-  <div className="mini-actions">
-    <a
-      href={item.link}
-      target="_blank"
-      rel="noreferrer"
-      className="mini-pubmed-btn"
-    >
-      PubMed
-    </a>
-
-    <a
-      href={
-        item.title.includes("sarcoidosis")
-          ? "/A review of sarcoidosis etiology, diagnosis and treatment.pdf"
-          : item.title.includes("septic arthritis")
-          ? "/The impact of comorbidities on the prognosis of patients with septic arthritis.pdf"
-          : "/Concussion injuries in sports and the role of instrumented mouthguards.pdf"
-      }
-      download
-      className="mini-pdf-btn"
-    >
-      <>
-  <FiFileText size={12} />
-  PDF
-</>
-    </a>
-  </div>
-</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="project-column-head">
-              <h3>Resource Library</h3>
-              <a className="view-link" href="/#/resources">
-                View all →
-              </a>
-            </div>
-
-            <div className="mini-stack">
-  {pdfs.map((pdf, i) => (
-    <a
-      className="mini-card"
-      key={i}
-      href={
-        pdf.title === "Digital Venture Profit Simulator"
-          ? "/#/venture"
-          : "/#/resources"
-      }
-    >
-                  <div className="cover-wrap">
-                    <img
-                      src={pdf.image}
-                      alt={pdf.title}
-                      onError={(e) => {
-                        e.target.style.display = "none";
-                        e.target.nextSibling.style.display = "flex";
-                      }}
-                    />
-                    <div className="cover-placeholder" style={{ display: "none" }}>
-                      Coming soon!
-                    </div>
-                  </div>
-
-                  <div className="mini-content">
-                    <h4>{pdf.title}</h4>
-                    <p>{pdf.desc}</p>
-                  </div>
+    <SiteLayout>
+      <main>
+        <section id="home" className="hero section-shell">
+          <div className="hero-copy">
+            <Reveal>
+              <SectionLabel>Medical student / Researcher / Creator</SectionLabel>
+              <h1>Building at the intersection of <span>medicine and ideas.</span></h1>
+              <p className="hero-intro">
+                I am Zaid Chilmeran, a medical student exploring research, education,
+                technology and creative projects with practical value.
+              </p>
+              <div className="hero-actions">
+                <Link className="button button-primary" to="/?section=projects">
+                  Explore my work <FiArrowDown />
+                </Link>
+                <a className="button button-quiet" href="mailto:zaidchilmeran@outlook.com">
+                  Start a conversation <FiArrowUpRight />
                 </a>
-              ))}
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal className="portrait-card" delay={0.08}>
+            <div className="portrait-frame">
+              <img src="/Profile.jpeg" alt="Portrait of Zaid Chilmeran" />
             </div>
+            <div className="portrait-caption">
+              <span>Currently</span>
+              <strong>Learning, researching and making useful things.</strong>
+            </div>
+          </Reveal>
+
+          <div className="hero-proof" aria-label="Portfolio highlights">
+            <div><strong>3</strong><span>Published papers</span></div>
+            <div><strong>8+</strong><span>Certifications</span></div>
+            <div><strong>4</strong><span>Areas of interest</span></div>
           </div>
-        </div>
-      </motion.section>
+        </section>
 
-      <motion.section
-        id="contact" className="section-offset"
-        className="contact"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
-      >
-        <div className="soft-panel"></div>
-        <DecorativeCluster position="left" />
+        <section id="about" className="section-shell about-section">
+          <Reveal className="section-heading split-heading">
+            <div>
+              <SectionLabel>01 / About</SectionLabel>
+              <h2>Curiosity with direction.</h2>
+            </div>
+            <p>
+              My work moves between clinical learning, academic research, football,
+              digital products and communication. The common thread is simple:
+              understand a problem clearly, then make something useful.
+            </p>
+          </Reveal>
 
-        <SmallLabel>04 — Contact</SmallLabel>
-        
-        <div className="contact-inner">
-
-          <h2>Let's connect.</h2>
-
-          <p>
-            Open to collaborations, questions, and conversations.
-            <br />
-            Reach out through any of the platforms below.
-          </p>
-
-          <div className="contact-icons">
-            <a href="mailto:zaid@zaidchilmeran.com" className="ic">
-              <FiMail size={20} />
-              <div>
-                <strong>Email</strong>
-                <span>zaid@zaidchilmeran.com</span>
-              </div>
-            </a>
-
-            <a href="https://www.linkedin.com/in/zaidchilmeran/" target="_blank" rel="noreferrer" className="ic">
-              <FiLinkedin size={20} />
-              <div>
-                <strong>LinkedIn</strong>
-                <span>Zaid Chilmeran</span>
-              </div>
-            </a>
+          <div className="interest-grid">
+            {[
+              ["Medicine", "Developing clinical knowledge and a thoughtful approach to patient-centred care."],
+              ["Research", "Contributing to accessible, evidence-led work across medical topics."],
+              ["Education", "Turning complex information into clear resources people can actually use."],
+              ["Digital projects", "Exploring product thinking, analytics and interface design through practical tools."],
+            ].map(([title, copy], index) => (
+              <Reveal className="interest-card" key={title} delay={index * 0.04}>
+                <span>0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </Reveal>
+            ))}
           </div>
-        </div>
-      </motion.section>
+        </section>
 
-<footer style={{ padding: "48px 5vw", borderTop: "1px solid rgba(8,23,43,0.07)", display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 0.5 }}>
-  <span style={{ fontSize: 12, fontWeight: 800, color: "#5b6f88", textTransform: "uppercase", letterSpacing: "0.14em" }}>
-    Zaid Chilmeran Portfolio
-  </span>
-  <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.14em", color: "#5b6f88" }}>
-    © 2026 Zaid Chilmeran
-  </p>
-</footer>
+        <section id="certificates" className="section-shell certificates-section">
+          <Reveal className="section-heading">
+            <SectionLabel>02 / Learning</SectionLabel>
+            <h2>Certificates and continued development.</h2>
+            <p>A selection of courses and qualifications across technology, marketing and football.</p>
+          </Reveal>
 
-    </>
+          <div className="certificate-grid">
+            {certificates.map((certificate, index) => (
+              <Reveal className="certificate-card" key={certificate.title} delay={(index % 4) * 0.03}>
+                <img src={certificate.image} alt="" aria-hidden="true" />
+                <div>
+                  <h3>{certificate.title}</h3>
+                  <p>{certificate.issuer}</p>
+                </div>
+                <span>{certificate.date}</span>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section id="research" className="section-shell research-home-section">
+          <Reveal className="section-heading split-heading">
+            <div>
+              <SectionLabel>03 / Research</SectionLabel>
+              <h2>Published work grounded in evidence.</h2>
+            </div>
+            <p>Medical publications exploring clinical outcomes, sports-related concussion and complex disease.</p>
+          </Reveal>
+
+          <div className="featured-grid research-featured-grid">
+            {researchPapers.map((paper) => (
+              <Reveal className="featured-card" key={paper.title}>
+                <div className="featured-image"><img src={paper.image} alt="" /></div>
+                <div className="featured-content">
+                  <div className="card-meta"><span>{paper.category}</span><span>{paper.year}</span></div>
+                  <h3>{paper.title}</h3>
+                  <p>{paper.description}</p>
+                  <div className="card-links">
+                    <a href={paper.pubmed} target="_blank" rel="noreferrer">PubMed <FiArrowUpRight /></a>
+                    <a href={paper.pdf} download>PDF <FiFileText /></a>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+
+          </div>
+
+          <Reveal className="section-end-link">
+            <Link to="/research">View all research <FiArrowUpRight /></Link>
+          </Reveal>
+        </section>
+
+        <section id="projects" className="section-shell work-section">
+          <Reveal className="section-heading split-heading">
+            <div>
+              <SectionLabel>04 / Projects and resources</SectionLabel>
+              <h2>Digital tools made for real use.</h2>
+            </div>
+            <p>Practical products and developing resources across football, education and digital venture modelling.</p>
+          </Reveal>
+
+          <div className="project-showcase-grid">
+            <Reveal className="featured-card featured-card-wide featured-card-dark">
+              <div className="featured-image"><img src={resources[0].image} alt="ZaidTacticsBoard tactical studio" /></div>
+              <div className="featured-content">
+                <div className="card-meta"><span>{resources[0].category}</span><span>Live</span></div>
+                <h3>{resources[0].title}</h3>
+                <p>{resources[0].description}</p>
+                <a className="text-link" href={resources[0].externalLink} target="_blank" rel="noreferrer">Visit zaidtacticsboard.com <FiArrowUpRight /></a>
+              </div>
+            </Reveal>
+
+            <Reveal className="featured-card featured-card-dark">
+              <div className="featured-image"><img src={resources[3].image} alt="Digital venture calculator interface" /></div>
+              <div className="featured-content">
+                <div className="card-meta"><span>Interactive tool</span><span>Live</span></div>
+                <h3>{resources[3].title}</h3>
+                <p>{resources[3].description}</p>
+                <Link className="text-link" to={resources[3].link}>Open simulator <FiArrowUpRight /></Link>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal className="work-directory">
+            <div><span>Explore the resource library</span><p>Browse live projects and developing educational resources.</p></div>
+            <div className="directory-links">
+              <Link to="/resources">Resources <FiArrowUpRight /></Link>
+            </div>
+          </Reveal>
+        </section>
+
+        <section id="contact" className="section-shell contact-section">
+          <Reveal className="contact-card">
+            <SectionLabel>05 / Contact</SectionLabel>
+            <h2>Have an idea worth exploring?</h2>
+            <p>I am open to thoughtful collaborations, research conversations and interesting projects.</p>
+            <div className="contact-actions">
+              <a className="button button-light" href="mailto:zaidchilmeran@outlook.com"><FiMail /> zaidchilmeran@outlook.com</a>
+              <a className="button button-outline-light" href="https://www.linkedin.com/in/zaidchilmeran/" target="_blank" rel="noreferrer"><FiLinkedin /> LinkedIn</a>
+            </div>
+          </Reveal>
+        </section>
+      </main>
+    </SiteLayout>
   );
 }
