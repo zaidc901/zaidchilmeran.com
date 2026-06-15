@@ -43,7 +43,7 @@ export const resources = [
   {
     category: "Football technology",
     title: "ZaidTacticsBoard",
-    description: "A modern tactical studio for designing formations, planning strategies and bringing football ideas to life.",
+    description: "A football tactics board I built for creating formations, moving players around and planning sessions or match ideas.",
     image: "/ZTBGraphic.png",
     externalLink: "https://zaidtacticsboard.com",
     status: "Live website",
@@ -51,19 +51,19 @@ export const resources = [
   {
     category: "Medicine",
     title: "Guide for First-Year Medical Students",
-    description: "A practical guide covering the essentials for navigating the first year of medical school.",
+    description: "Notes and advice I am putting together for students starting their first year of medical school.",
     status: "In progress",
   },
   {
     category: "Football",
     title: "FA Football Coach Guide",
-    description: "A guide to football coaching certifications and progression pathways.",
+    description: "A guide to the early FA coaching courses and the different routes available to new coaches.",
     status: "In progress",
   },
   {
     category: "Digital tool",
     title: "Digital Venture Profit Simulator",
-    description: "An interactive project for modelling costs, sales volume, profit margin and return on investment.",
+    description: "A small interactive calculator for testing costs, sales volume and possible profit for a digital project.",
     image: "/DigitalVenture.png",
     link: "/venture",
     status: "Live project",

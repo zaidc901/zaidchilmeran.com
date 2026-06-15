@@ -21,18 +21,19 @@ export default function App() {
         <section id="home" className="hero section-shell">
           <div className="hero-copy">
             <Reveal>
-              <SectionLabel>Medical student / Researcher / Creator</SectionLabel>
-              <h1>Building at the intersection of <span>medicine and ideas.</span></h1>
+              <SectionLabel>Personal portfolio / 2026</SectionLabel>
+              <h1>Hi, I&apos;m Zaid.<br /><span>Welcome to my corner of the internet.</span></h1>
               <p className="hero-intro">
-                I am Zaid Chilmeran, a medical student exploring research, education,
-                technology and creative projects with practical value.
+                I&apos;m a medical student with interests in research, football, education
+                and technology. This is where I keep the things I&apos;ve worked on and the
+                subjects I&apos;m learning more about.
               </p>
               <div className="hero-actions">
                 <Link className="button button-primary" to="/?section=projects">
-                  Explore my work <FiArrowDown />
+                  Browse the site <FiArrowDown />
                 </Link>
                 <a className="button button-quiet" href="mailto:zaidchilmeran@outlook.com">
-                  Start a conversation <FiArrowUpRight />
+                  Email me <FiArrowUpRight />
                 </a>
               </div>
             </Reveal>
@@ -43,15 +44,16 @@ export default function App() {
               <img src="/Profile.jpeg" alt="Portrait of Zaid Chilmeran" />
             </div>
             <div className="portrait-caption">
-              <span>Currently</span>
-              <strong>Learning, researching and making useful things.</strong>
+              <span>About this site</span>
+              <strong>A personal archive of research, projects and interests.</strong>
             </div>
           </Reveal>
 
-          <div className="hero-proof" aria-label="Portfolio highlights">
-            <div><strong>3</strong><span>Published papers</span></div>
-            <div><strong>8+</strong><span>Certifications</span></div>
-            <div><strong>4</strong><span>Areas of interest</span></div>
+          <div className="hero-proof" aria-label="Main interests">
+            <div><span>Medicine</span></div>
+            <div><span>Research</span></div>
+            <div><span>Football</span></div>
+            <div><span>Digital projects</span></div>
           </div>
         </section>
 
@@ -59,21 +61,21 @@ export default function App() {
           <Reveal className="section-heading split-heading">
             <div>
               <SectionLabel>01 / About</SectionLabel>
-              <h2>Curiosity with direction.</h2>
+              <h2>A few things I spend time on.</h2>
             </div>
             <p>
-              My work moves between clinical learning, academic research, football,
-              digital products and communication. The common thread is simple:
-              understand a problem clearly, then make something useful.
+              Medicine is the main path. Alongside it, I enjoy research, football,
+              writing and building small digital projects. They do not always overlap,
+              but each one has shaped how I think and work.
             </p>
           </Reveal>
 
           <div className="interest-grid">
             {[
-              ["Medicine", "Developing clinical knowledge and a thoughtful approach to patient-centred care."],
-              ["Research", "Contributing to accessible, evidence-led work across medical topics."],
-              ["Education", "Turning complex information into clear resources people can actually use."],
-              ["Digital projects", "Exploring product thinking, analytics and interface design through practical tools."],
+              ["Medicine", "Studying medicine and building the clinical foundation for the work I hope to do in the future."],
+              ["Research", "Working on medical papers and learning how good questions become useful evidence."],
+              ["Football", "Following the game, learning about coaching and exploring the tactical side of football."],
+              ["Digital projects", "Making small tools and websites when an idea feels worth trying."],
             ].map(([title, copy], index) => (
               <Reveal className="interest-card" key={title} delay={index * 0.04}>
                 <span>0{index + 1}</span>
@@ -87,8 +89,8 @@ export default function App() {
         <section id="certificates" className="section-shell certificates-section">
           <Reveal className="section-heading">
             <SectionLabel>02 / Learning</SectionLabel>
-            <h2>Certificates and continued development.</h2>
-            <p>A selection of courses and qualifications across technology, marketing and football.</p>
+            <h2>Courses and qualifications.</h2>
+            <p>Some of the courses I have completed outside my medical degree.</p>
           </Reveal>
 
           <div className="certificate-grid">
@@ -109,9 +111,9 @@ export default function App() {
           <Reveal className="section-heading split-heading">
             <div>
               <SectionLabel>03 / Research</SectionLabel>
-              <h2>Published work grounded in evidence.</h2>
+              <h2>Research I&apos;ve worked on.</h2>
             </div>
-            <p>Medical publications exploring clinical outcomes, sports-related concussion and complex disease.</p>
+            <p>Published papers across sports medicine, infectious disease and rheumatology.</p>
           </Reveal>
 
           <div className="featured-grid research-featured-grid">
@@ -141,9 +143,9 @@ export default function App() {
           <Reveal className="section-heading split-heading">
             <div>
               <SectionLabel>04 / Projects and resources</SectionLabel>
-              <h2>Digital tools made for real use.</h2>
+              <h2>Things I&apos;ve built and collected.</h2>
             </div>
-            <p>Practical products and developing resources across football, education and digital venture modelling.</p>
+            <p>A mix of live projects and resources I&apos;m still putting together.</p>
           </Reveal>
 
           <div className="project-showcase-grid">
@@ -169,7 +171,7 @@ export default function App() {
           </div>
 
           <Reveal className="work-directory">
-            <div><span>Explore the resource library</span><p>Browse live projects and developing educational resources.</p></div>
+            <div><span>Resource library</span><p>Live projects, guides and a few works in progress.</p></div>
             <div className="directory-links">
               <Link to="/resources">Resources <FiArrowUpRight /></Link>
             </div>
@@ -179,8 +181,8 @@ export default function App() {
         <section id="contact" className="section-shell contact-section">
           <Reveal className="contact-card">
             <SectionLabel>05 / Contact</SectionLabel>
-            <h2>Have an idea worth exploring?</h2>
-            <p>I am open to thoughtful collaborations, research conversations and interesting projects.</p>
+            <h2>Say hello.</h2>
+            <p>If you would like to ask about something on the site, the easiest way to reach me is by email.</p>
             <div className="contact-actions">
               <a className="button button-light" href="mailto:zaidchilmeran@outlook.com"><FiMail /> zaidchilmeran@outlook.com</a>
               <a className="button button-outline-light" href="https://www.linkedin.com/in/zaidchilmeran/" target="_blank" rel="noreferrer"><FiLinkedin /> LinkedIn</a>

@@ -15,8 +15,8 @@ export default function Resources() {
         <section className="section-shell page-hero">
           <Reveal>
             <SectionLabel>Resource library</SectionLabel>
-            <h1>Useful things, clearly made.</h1>
-            <p>A growing collection of educational guides and interactive tools.</p>
+            <h1>Projects and resources.</h1>
+            <p>Things I have built, alongside guides and notes that are still in progress.</p>
           </Reveal>
         </section>
 
@@ -34,16 +34,16 @@ export default function Resources() {
                     <h2>{resource.title}</h2>
                     <p>{resource.description}</p>
                     <span className="resource-cta">
-                      {resource.link ? <>Open project <FiArrowUpRight /></> : <><FiClock /> Coming soon</>}
+                      {resource.externalLink ? <>Visit website <FiArrowUpRight /></> : resource.link ? <>Open project <FiArrowUpRight /></> : <><FiClock /> In progress</>}
                     </span>
                   </div>
                 </>
               );
 
               return (
-                <Reveal className="resource-reveal" key={resource.title} delay={index * 0.05}>
+                <Reveal className={`resource-reveal ${resource.externalLink ? "resource-reveal-featured" : ""}`} key={resource.title} delay={index * 0.05}>
                   {resource.externalLink ? (
-                    <a className="resource-card" href={resource.externalLink} target="_blank" rel="noreferrer">{content}</a>
+                    <a className="resource-card resource-card-featured" href={resource.externalLink} target="_blank" rel="noreferrer">{content}</a>
                   ) : resource.link ? (
                     <Link className="resource-card" to={resource.link}>{content}</Link>
                   ) : (

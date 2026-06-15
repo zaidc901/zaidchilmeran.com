@@ -12,8 +12,8 @@ export default function Research() {
         <section className="section-shell page-hero">
           <Reveal>
             <SectionLabel>Research archive</SectionLabel>
-            <h1>Questions explored through evidence.</h1>
-            <p>Published work across sports medicine, infectious disease and rheumatology.</p>
+            <h1>Research.</h1>
+            <p>Papers I have worked on across sports medicine, infectious disease and rheumatology.</p>
           </Reveal>
         </section>
 

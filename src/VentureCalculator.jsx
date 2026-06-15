@@ -102,7 +102,7 @@ export default function VentureCalculator() {
 
   const pieData = [
     { name: "Software", value: Math.round(stats.software), color: "#1264d8" },
-    { name: "Marketing", value: Math.round(stats.fixedMarketing), color: "#715cff" },
+    { name: "Marketing", value: Math.round(stats.fixedMarketing), color: "#4e9bff" },
     { name: "Fees", value: Math.round(stats.platformFees + stats.commissions), color: "#20c6e8" },
   ].filter((item) => item.value > 0);
 
@@ -216,7 +216,7 @@ export default function VentureCalculator() {
           <div className="metric-grid">
             <Metric label="Gross revenue" value={`$${stats.revenue.toLocaleString()}`} color="#1264d8" />
             <Metric label="Net profit" value={`$${Math.round(stats.profit).toLocaleString()}`} color="#20a4f3" />
-            <Metric label="Profit margin" value={`${stats.margin.toFixed(1)}%`} color="#715cff" />
+            <Metric label="Profit margin" value={`${stats.margin.toFixed(1)}%`} color="#4e9bff" />
             <Metric label="Return on investment" value={`${Math.round(stats.roi)}%`} color="#20c6e8" />
           </div>
 

@@ -80,7 +80,7 @@ function SiteFooter() {
   return (
     <footer className="site-footer">
       <div>
-        <span className="footer-kicker">Based in medicine. Curious about everything.</span>
+        <span className="footer-kicker">Personal site and archive</span>
         <p>Zaid Chilmeran</p>
       </div>
       <div className="footer-links">
