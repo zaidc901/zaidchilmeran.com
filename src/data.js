@@ -37,6 +37,15 @@ export const researchPapers = [
     pubmed: "https://pubmed.ncbi.nlm.nih.gov/40078389/",
     pdf: "/A review of sarcoidosis etiology, diagnosis and treatment.pdf",
   },
+  {
+    image: "/Artificial Pancreas and Closed-Loop Insulin Delivery.png",
+    title: "Artificial Pancreas and Closed-Loop Insulin Delivery",
+    description: "Reviews the evolution of artificial pancreas and closed-loop insulin delivery systems, highlighting current technologies, clinical benefits, limitations, and the growing role of AI in diabetes automation.",
+    year: "2026",
+    category: "Diabetes technology",
+    pubmed: "https://pubmed.ncbi.nlm.nih.gov/42783174/",
+    pdf: "/Artificial Pancreas and Closed-Loop Insulin Delivery.pdf",
+  },
 ];
 
 export const resources = [

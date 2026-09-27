@@ -7,7 +7,9 @@ import { resources } from "./data.js";
 const icons = [FiBookOpen, FiGrid, FiArrowUpRight];
 
 export default function Resources() {
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <SiteLayout>

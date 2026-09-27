@@ -54,7 +54,9 @@ function Metric({ label, value, color }) {
 }
 
 export default function VentureCalculator() {
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [price, setPrice] = useState(49);
   const [quantity, setQuantity] = useState(50);

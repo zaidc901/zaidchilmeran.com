@@ -4,7 +4,9 @@ import { Reveal, SectionLabel, SiteLayout } from "./components/SiteChrome.jsx";
 import { researchPapers } from "./data.js";
 
 export default function Research() {
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <SiteLayout>
@@ -13,7 +15,7 @@ export default function Research() {
           <Reveal>
             <SectionLabel>Research archive</SectionLabel>
             <h1>Research.</h1>
-            <p>Papers I have worked on across sports medicine, infectious disease and rheumatology.</p>
+            <p>Papers I have worked on across sports medicine, infectious disease, rheumatology and diabetes technology.</p>
           </Reveal>
         </section>
 

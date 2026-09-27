@@ -113,7 +113,7 @@ export default function App() {
               <SectionLabel>03 / Research</SectionLabel>
               <h2>Research I&apos;ve worked on.</h2>
             </div>
-            <p>Published papers across sports medicine, infectious disease and rheumatology.</p>
+            <p>Published papers across sports medicine, infectious disease, rheumatology and diabetes technology.</p>
           </Reveal>
 
           <div className="featured-grid research-featured-grid">
