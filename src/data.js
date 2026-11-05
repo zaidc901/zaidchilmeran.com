@@ -46,6 +46,15 @@ export const researchPapers = [
     pubmed: "https://pubmed.ncbi.nlm.nih.gov/42783174/",
     pdf: "/Artificial Pancreas and Closed-Loop Insulin Delivery.pdf",
   },
+  {
+    image: "/Henna.png",
+    title: "Clinical efficacy and safety of Lawsonia inermis (Henna)",
+    description: "Led a systematic review of 24 clinical studies on henna's efficacy and safety, from methodology and evidence synthesis to manuscript drafting and revision.",
+    year: "2026",
+    category: "Complementary medicine",
+    pubmed: "https://pubmed.ncbi.nlm.nih.gov/42966605/",
+    pdf: "/Clinical efficacy and safety of Lawsonia inermis (Henna).pdf",
+  },
 ];
 
 export const resources = [

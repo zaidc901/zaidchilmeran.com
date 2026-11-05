@@ -15,7 +15,7 @@ export default function Research() {
           <Reveal>
             <SectionLabel>Research archive</SectionLabel>
             <h1>Research.</h1>
-            <p>Papers I have worked on across sports medicine, infectious disease, rheumatology and diabetes technology.</p>
+            <p>Papers I have worked on across clinical medicine, medical technology and evidence synthesis.</p>
           </Reveal>
         </section>
 
