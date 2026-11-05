@@ -28,6 +28,7 @@ export default function Research() {
                 <div className="research-copy">
                   <div className="card-meta"><span>{paper.category}</span><span>{paper.year}</span></div>
                   <h2>{paper.title}</h2>
+                  <span className="publication-badge" data-type={paper.publicationType}>{paper.publicationType}</span>
                   <p>{paper.description}</p>
                 </div>
                 <div className="research-links">

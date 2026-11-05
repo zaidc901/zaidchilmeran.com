@@ -123,6 +123,7 @@ export default function App() {
                 <div className="featured-content">
                   <div className="card-meta"><span>{paper.category}</span><span>{paper.year}</span></div>
                   <h3>{paper.title}</h3>
+                  <span className="publication-badge" data-type={paper.publicationType}>{paper.publicationType}</span>
                   <p>{paper.description}</p>
                   <div className="card-links">
                     <a href={paper.pubmed} target="_blank" rel="noreferrer">PubMed <FiArrowUpRight /></a>

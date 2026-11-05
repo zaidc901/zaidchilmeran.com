@@ -649,6 +649,56 @@ select:focus-visible {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.research-featured-grid .featured-content h3 {
+  min-height: 0;
+}
+
+.publication-badge {
+  --badge-ink: #265b9d;
+  --badge-tint: #e5f0ff;
+  --badge-border: #c4dbf7;
+  --badge-dot: #4b91ed;
+  display: inline-flex;
+  max-width: 100%;
+  margin-bottom: 16px;
+  padding: 8px 14px;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--badge-border);
+  border-radius: 999px;
+  background: linear-gradient(145deg, #ffffff, var(--badge-tint));
+  box-shadow: inset 0 1px 0 #ffffff, 0 4px 12px rgba(30, 91, 160, 0.07);
+  color: var(--badge-ink);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.015em;
+  line-height: 1.3;
+}
+
+.publication-badge::before {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--badge-dot);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.55);
+  content: "";
+}
+
+.publication-badge[data-type="Review"] {
+  --badge-ink: #66509b;
+  --badge-tint: #eee9ff;
+  --badge-border: #ddd1f5;
+  --badge-dot: #9a7bd4;
+}
+
+.publication-badge[data-type="Systematic review"] {
+  --badge-ink: #216c62;
+  --badge-tint: #e1f5ef;
+  --badge-border: #bee4d8;
+  --badge-dot: #42a48d;
+}
+
 @media (min-width: 761px) {
   .research-featured-grid > .featured-card:last-child:nth-child(odd) {
     grid-column: 1 / -1;

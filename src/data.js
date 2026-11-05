@@ -13,6 +13,7 @@ export const researchPapers = [
   {
     image: "/Concussion.png",
     title: "Concussion injuries in sports and instrumented mouthguards",
+    publicationType: "Mini review",
     description: "Explores sports-related concussions and the role of instrumented mouthguards in impact monitoring and athlete safety.",
     year: "2025",
     category: "Biomechanics",
@@ -22,6 +23,7 @@ export const researchPapers = [
   {
     image: "/Septic Arthritis.png",
     title: "The impact of comorbidities on the prognosis of patients with septic arthritis",
+    publicationType: "Mini review",
     description: "Examines how comorbidities influence outcomes, prognosis and clinical risk in septic arthritis patients.",
     year: "2025",
     category: "Infectious diseases",
@@ -31,6 +33,7 @@ export const researchPapers = [
   {
     image: "/Sarcoidosis.png",
     title: "A review of sarcoidosis etiology, diagnosis and treatment",
+    publicationType: "Mini review",
     description: "Reviews the causes, diagnosis and treatment approaches for sarcoidosis.",
     year: "2025",
     category: "Rheumatology",
@@ -40,6 +43,7 @@ export const researchPapers = [
   {
     image: "/Artificial Pancreas and Closed-Loop Insulin Delivery.png",
     title: "Artificial Pancreas and Closed-Loop Insulin Delivery",
+    publicationType: "Review",
     description: "Reviews the evolution of artificial pancreas and closed-loop insulin delivery systems, highlighting current technologies, clinical benefits, limitations, and the growing role of AI in diabetes automation.",
     year: "2026",
     category: "Diabetes technology",
@@ -49,6 +53,7 @@ export const researchPapers = [
   {
     image: "/Henna.png",
     title: "Clinical efficacy and safety of Lawsonia inermis (Henna)",
+    publicationType: "Systematic review",
     description: "Led a systematic review of 24 clinical studies on henna's efficacy and safety, from methodology and evidence synthesis to manuscript drafting and revision.",
     year: "2026",
     category: "Complementary medicine",
