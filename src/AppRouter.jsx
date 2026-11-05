@@ -1,20 +1,18 @@
-import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import App from "./App.jsx";
-
-const Research = lazy(() => import("./Research.jsx"));
-const Resources = lazy(() => import("./Resources.jsx"));
-const VentureCalculator = lazy(() => import("./VentureCalculator.jsx"));
+// Load routes together so open tabs never request deleted page chunks after a deployment.
+import Research from "./Research.jsx";
+import Resources from "./Resources.jsx";
+import VentureCalculator from "./VentureCalculator.jsx";
 
 export default function AppRouter() {
   return (
-    <Suspense fallback={<div className="route-loader" role="status">Loading page...</div>}>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/research" element={<Research />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/venture" element={<VentureCalculator />} />
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/research" element={<Research />} />
+      <Route path="/resources" element={<Resources />} />
+      <Route path="/venture" element={<VentureCalculator />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
