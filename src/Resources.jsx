@@ -25,7 +25,7 @@ export default function Resources() {
         <section className="section-shell archive-section">
           <div className="resource-grid">
             {resources.map((resource, index) => {
-              const Icon = icons[index];
+              const Icon = icons[index] || FiGrid;
               const content = (
                 <>
                   <div className={`resource-visual ${resource.image ? "has-image" : ""}`}>
@@ -36,16 +36,16 @@ export default function Resources() {
                     <h2>{resource.title}</h2>
                     <p>{resource.description}</p>
                     <span className="resource-cta">
-                      {resource.externalLink ? <>Visit website <FiArrowUpRight /></> : resource.link ? <>Open project <FiArrowUpRight /></> : <><FiClock /> In progress</>}
+                      {resource.externalLink || resource.link ? <>{resource.linkLabel} <FiArrowUpRight /></> : <><FiClock /> In progress</>}
                     </span>
                   </div>
                 </>
               );
 
               return (
-                <Reveal className={`resource-reveal ${resource.externalLink ? "resource-reveal-featured" : ""}`} key={resource.title} delay={index * 0.05}>
+                <Reveal className={`resource-reveal ${resource.featured ? "resource-reveal-featured" : ""}`} key={resource.title} delay={index * 0.05}>
                   {resource.externalLink ? (
-                    <a className="resource-card resource-card-featured" href={resource.externalLink} target="_blank" rel="noreferrer">{content}</a>
+                    <a className={`resource-card ${resource.featured ? "resource-card-featured" : ""}`} href={resource.externalLink} target="_blank" rel="noreferrer">{content}</a>
                   ) : resource.link ? (
                     <Link className="resource-card" to={resource.link}>{content}</Link>
                   ) : (

@@ -149,25 +149,21 @@ export default function App() {
           </Reveal>
 
           <div className="project-showcase-grid">
-            <Reveal className="featured-card featured-card-wide featured-card-dark">
-              <div className="featured-image"><img src={resources[0].image} alt="ZaidTacticsBoard tactical studio" /></div>
-              <div className="featured-content">
-                <div className="card-meta"><span>{resources[0].category}</span><span>Live</span></div>
-                <h3>{resources[0].title}</h3>
-                <p>{resources[0].description}</p>
-                <a className="text-link" href={resources[0].externalLink} target="_blank" rel="noreferrer">Visit zaidtacticsboard.com <FiArrowUpRight /></a>
-              </div>
-            </Reveal>
-
-            <Reveal className="featured-card featured-card-dark">
-              <div className="featured-image"><img src={resources[3].image} alt="Digital venture calculator interface" /></div>
-              <div className="featured-content">
-                <div className="card-meta"><span>Interactive tool</span><span>Live</span></div>
-                <h3>{resources[3].title}</h3>
-                <p>{resources[3].description}</p>
-                <Link className="text-link" to={resources[3].link}>Open simulator <FiArrowUpRight /></Link>
-              </div>
-            </Reveal>
+            {resources.filter((resource) => resource.externalLink || resource.link).map((resource) => (
+              <Reveal className="featured-card featured-card-dark" key={resource.title}>
+                <div className="featured-image"><img src={resource.image} alt={resource.imageAlt} /></div>
+                <div className="featured-content">
+                  <div className="card-meta"><span>{resource.category}</span><span>Live</span></div>
+                  <h3>{resource.title}</h3>
+                  <p>{resource.description}</p>
+                  {resource.externalLink ? (
+                    <a className="text-link" href={resource.externalLink} target="_blank" rel="noreferrer">{resource.linkLabel} <FiArrowUpRight /></a>
+                  ) : (
+                    <Link className="text-link" to={resource.link}>{resource.linkLabel} <FiArrowUpRight /></Link>
+                  )}
+                </div>
+              </Reveal>
+            ))}
           </div>
 
           <Reveal className="work-directory">
